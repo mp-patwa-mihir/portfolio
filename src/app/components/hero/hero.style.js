@@ -24,13 +24,18 @@ const HeroWrapper = styled.div(() => ({
             flexDirection: 'column',
             justifyContent: 'center',
             gap: '1rem',
+            '@media (max-width: 767px)': {
+                alignItems: 'center',
+            },
             '& .title': {
                 fontSize: '3rem',
                 fontWeight: 'bold',
                 width: 'fit-content',
+                '@media (max-width: 767px)': {
+                    textAlign: 'center',
+                },
                 '@media (max-width: 576px)': {
                     width: '100%',
-                    textAlign: 'center',
                     fontSize: '2rem',
                 },
             },
@@ -39,22 +44,32 @@ const HeroWrapper = styled.div(() => ({
                 fontSize: '3rem',
                 display: 'inline-block',
                 fontWeight: 'bold',
+                '@media (max-width: 767px)': {
+                    textAlign: 'center',
+                },
                 '@media (max-width: 576px)': {
                     width: '100%',
-                    textAlign: 'center',
                     fontSize: '2rem',
                 },
             },
             '& .hire_text_div': {
                 width: 'fit-content',
+                '@media (max-width: 767px)': {
+                    textAlign: 'center',
+                    width: '100%',
+                },
                 '& .text': {
                     fontSize: '1.5rem',
                     fontWeight: 'bold',
                     '@media (max-width: 576px)': {
-                        textAlign: 'center',
                         fontSize: '1rem',
                     },
                 },
+            },
+            '& .btn_div': {
+                width: 'fit-content',
+                display: 'flex',
+                gap: '1.5rem',
             },
         },
         '& .hero_img_col': {
@@ -73,6 +88,15 @@ const HeroWrapper = styled.div(() => ({
                 img: {
                     objectFit: 'cover',
                     borderRadius: '25%',
+                },
+            },
+            '& .swiper': {
+                width: '100%',
+                height: '100%',
+                '& .swiper-slide': {
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                 },
             },
         },
