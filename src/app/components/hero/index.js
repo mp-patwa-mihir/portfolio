@@ -81,7 +81,7 @@ const Hero = () => {
                             shadowScale: 0.94,
                         }}
                         autoplay={{
-                            delay: 25000,
+                            delay: 2500,
                             disableOnInteraction: false,
                         }}
                         loop={true}
