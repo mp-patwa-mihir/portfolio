@@ -1,4 +1,5 @@
 import { Advent_Pro, Capriola } from "next/font/google";
+import { Analytics } from '@vercel/analytics/react';
 import dynamic from "next/dynamic";
 import "./globals.css";
 
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
       <body className={`${capriola.variable} ${adventPro.variable}`}>
         <Header />
         {children}
+        <Analytics />
       </body>
     </html>
   );

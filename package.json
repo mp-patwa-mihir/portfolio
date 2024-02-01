@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.1.2",
     "antd": "^5.13.3",
+    "keen-slider": "^6.8.6",
+    "lottie-react": "^2.4.0",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
