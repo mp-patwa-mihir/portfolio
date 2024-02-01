@@ -2,10 +2,6 @@ import styled from "styled-components";
 
 const HeroWrapper = styled.div(() => ({
     width: '100%',
-    height: 'calc(100vh - 72px)',
-    '@media (max-width: 576px)': {
-        height: 'calc(100vh - 61.6px)',
-    },
     '& .hero_main_row': {
         width: '100%',
         maxWidth: '2000px',
