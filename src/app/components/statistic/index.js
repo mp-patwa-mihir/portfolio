@@ -32,7 +32,7 @@ const StatisticComp = () => {
                 <div className='main_col_div'>
                     <Col xs={12} className='stat_col'>
                         <Typography.Text className='text'>3</Typography.Text>
-                        <Typography.Text className='title'>Projects</Typography.Text>
+                        <Typography.Text className='title'>Contribute</Typography.Text>
                     </Col>
                     <Col xs={12} className='stat_col'>
                         <Typography.Text className='text'>1 +</Typography.Text>

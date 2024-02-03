@@ -9,9 +9,12 @@ const HeaderWrapper = styled.div(() => ({
         maxWidth: '2000px',
         margin: '0 auto',
         '& .logo_col': {
+            display: 'flex',
+            alignItems: 'center',
             '& .title': {
                 fontSize: '2rem',
                 fontWeight: 'bold',
+                cursor: 'pointer',
                 '@media (max-width: 576px)': {
                     fontSize: '1.5rem',
                 },
@@ -30,7 +33,23 @@ const HeaderWrapper = styled.div(() => ({
                 },
             },
             '@media (max-width: 576px)': {
-                gap: '1rem',
+                display: 'none',
+            },
+        },
+        '& .menu_col_res': {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            span: {
+                width: '1.5rem',
+                height: '1.5rem',
+                svg: {
+                    width: '1.5rem',
+                    height: '1.5rem',
+                },
+            },
+            '@media (min-width: 577px)': {
+                display: 'none',
             },
         },
     },

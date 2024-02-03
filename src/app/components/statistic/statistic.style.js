@@ -18,6 +18,10 @@ const StatisticStyleWrapper = styled.div(() => ({
             border: '1px solid #fff',
             padding: '1rem 0rem',
             borderRadius: '1rem',
+            '@media (max-width: 576px)': {
+                flexDirection: 'column',
+                alignItems: 'center',
+            },
             '& .stat_col': {
                 display: 'flex',
                 flexDirection: 'column',

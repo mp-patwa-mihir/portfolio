@@ -6,17 +6,22 @@
  * @requires 'antd'
  */
 
-'use client'
-import React, { memo } from 'react'
-import { Col, Row } from 'antd'
-import dynamic from 'next/dynamic'
+'use client';
+
+import React, { memo, useState } from 'react';
+import { Button, Col, Row } from 'antd';
+import dynamic from 'next/dynamic';
+import { Typography } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
+import MenuDrawer from '../menuDrawer/index';
+import { useRouter } from 'next/navigation';
 
 const HeaderWrapper = dynamic(() => import('./header.style'), {
     ssr: false,
-})
+});
 
 /**
- * Header functional component.
+ * Functional component representing the header of the portfolio website.
  * @component
  * @example
  * import Header from './Header';
@@ -24,44 +29,57 @@ const HeaderWrapper = dynamic(() => import('./header.style'), {
  */
 
 const Header = () => {
+    const router = useRouter();
+    const [menuModal, setMenuModal] = useState(false);
 
     /**
-  * Array of sections to be displayed in the header menu.
-  * @type {Array}
-  */
-
-    const sections = [{
-        title: 'About',
-        key: 1,
-    },
-    {
-        title: 'Projects',
-        key: 2,
-    },
-    {
-        title: 'Contact',
-        key: 3,
-    }];
+     * Array of sections to be displayed in the header menu.
+     * @type {Array.<{title: string, key: number, path: string}>}
+     */
+    const sections = [
+        {
+            title: 'About',
+            key: 1,
+            path: '/about',
+        },
+        {
+            title: 'Projects',
+            key: 2,
+            path: '/projects',
+        },
+        {
+            title: 'Contact',
+            key: 3,
+            path: '/contact',
+        }
+    ];
 
     /**
- * Render the Header component.
- * @returns {JSX.Element} JSX for the Header component.
- */
-
+     * Render the Header component.
+     * @returns {JSX.Element} JSX for the Header component.
+     */
     return (
         <HeaderWrapper>
-            <Row className='header_main_row'>
-                <Col xs={6} className='logo_col'><a className='title'>Portfolio</a></Col>
-                <Col xs={18} className='menu_col'>
+            <Row className='header_main_row' justify='space-between'>
+                <Col className='logo_col'>
+                    <Typography.Text className='title' onClick={() => router.push('/')}>
+                        Portfolio
+                    </Typography.Text>
+                </Col>
+                <Col className='menu_col'>
                     {sections?.map((item) => (
-                        <a className='text' key={item?.key}>
+                        <Button className='glow-on-hover' key={item?.key} onClick={() => router.push(item.path)}>
                             {item?.title}
-                        </a>
+                        </Button>
                     ))}
                 </Col>
+                <Col xs={4} md={0} className='menu_col_res'>
+                    <MenuOutlined size={24} onClick={() => setMenuModal(true)} />
+                </Col>
             </Row>
+            <MenuDrawer open={menuModal} onClose={() => setMenuModal(false)} sections={sections} />
         </HeaderWrapper>
-    )
-}
+    );
+};
 
-export default memo(Header)
+export default memo(Header);

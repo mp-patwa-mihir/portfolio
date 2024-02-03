@@ -23,6 +23,12 @@ a:hover {
   color: inherit;
 }
 
+@media (prefers-color-scheme: white) {
+  html {
+    color-scheme: dark;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -73,6 +79,7 @@ a:hover {
 
 /* ----------------------------------------------- button css start ------------------------------------------------ */
 .glow-on-hover {
+  height: 38px;
   padding: 0.75rem;
   border: none;
   outline: none;
@@ -85,6 +92,9 @@ a:hover {
   font-weight: bold;
   border-radius: 10px;
   box-shadow: 0rem 0rem 0.75rem 0rem rgb(255 255 255 / 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .glow-on-hover:before {
@@ -108,8 +118,12 @@ a:hover {
   background: transparent;
 }
 
+.glow-on-hover:hover {
+  color: #fff !important;
+}
+
 .glow-on-hover:active {
-  color: #fff
+  color: #fff !important;
 }
 
 .glow-on-hover:hover:before {
@@ -143,3 +157,11 @@ a:hover {
 }
 
 /* ----------------------------------------------- button css end ------------------------------------------------ */
+
+/* ------------------- drawer css start ------------------- */
+
+.ant-drawer-content-wrapper {
+  box-shadow: none !important;
+}
+
+/* ------------------- drawer css end ------------------- */
