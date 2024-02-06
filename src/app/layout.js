@@ -35,9 +35,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${capriola.variable} ${adventPro.variable}`}>
-        <Preloader />
-        <Header />
-        {children}
+        <Preloader>
+          <Header />
+          {children}
+        </Preloader>
         <Analytics />
       </body>
     </html>

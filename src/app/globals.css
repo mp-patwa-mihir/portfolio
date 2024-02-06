@@ -23,7 +23,7 @@ a:hover {
   color: inherit;
 }
 
-@media (prefers-color-scheme: white) {
+@media (prefers-color-scheme: light) {
   html {
     color-scheme: dark;
   }

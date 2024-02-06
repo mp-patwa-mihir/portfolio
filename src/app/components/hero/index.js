@@ -5,7 +5,7 @@
  * @module components/Hero
  */
 
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import dynamic from "next/dynamic";
 import { Button, Col, Row, Typography } from "antd";
 import Image from "next/image";
@@ -20,6 +20,7 @@ import 'swiper/css/effect-cube';
 // Import required Swiper modules
 import { Autoplay, EffectCube, Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
+import { useRouter } from "next/navigation";
 
 /**
  * Dynamically import HeroWrapper component.
@@ -34,6 +35,13 @@ const { Text } = Typography;
  * @returns {React.Component} The Hero component.
  */
 const Hero = () => {
+    const router = useRouter()
+    const email = 'mailto:patwamihir2@gmail.com';
+
+    const hireClick = useCallback(() => {
+        router.push(email);
+    }, [router])
+
     /**
      * Render the Hero component.
      * @returns {React.Component} The rendered Hero component.
@@ -63,7 +71,7 @@ const Hero = () => {
                         </Text>
                     </div>
                     <div className='btn_div'>
-                        <Button className="glow-on-hover">Hire Me</Button>
+                        <Button onClick={hireClick} className="glow-on-hover">Hire Me</Button>
                         <Button className="glow-on-hover">Download CV</Button>
                     </div>
                 </Col>

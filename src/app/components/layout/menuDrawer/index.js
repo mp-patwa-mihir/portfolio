@@ -47,7 +47,14 @@ const MenuDrawer = ({ open, onClose, sections }) => {
                             key={item?.key}
                             onClick={() => {
                                 onClose();
-                                router.push(item.path);
+                                if (pathname !== item.path) {
+                                    if (item.path !== '/contact') {
+                                        router.push(item.path)
+                                    } else {
+                                        const email = 'mailto:patwamihir2@gmail.com';
+                                        router.push(email);
+                                    }
+                                }
                             }}
                         >
                             {item?.title}

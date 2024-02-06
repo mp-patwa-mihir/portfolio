@@ -14,7 +14,7 @@ import dynamic from 'next/dynamic';
 import { Typography } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import MenuDrawer from '../menuDrawer/index';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const HeaderWrapper = dynamic(() => import('./header.style'), {
     ssr: false,
@@ -30,6 +30,7 @@ const HeaderWrapper = dynamic(() => import('./header.style'), {
 
 const Header = () => {
     const router = useRouter();
+    const pathname = usePathname();
     const [menuModal, setMenuModal] = useState(false);
 
     /**
@@ -62,13 +63,28 @@ const Header = () => {
         <HeaderWrapper>
             <Row className='header_main_row' justify='space-between'>
                 <Col className='logo_col'>
-                    <Typography.Text className='title' onClick={() => router.push('/')}>
+                    <Typography.Text className='title' onClick={() => {
+                        if (pathname !== '/') {
+                            router.push('/')
+                        }
+                    }
+                    }>
                         Portfolio
                     </Typography.Text>
                 </Col>
                 <Col className='menu_col'>
                     {sections?.map((item) => (
-                        <Button className='glow-on-hover' key={item?.key} onClick={() => router.push(item.path)}>
+                        <Button className='glow-on-hover' key={item?.key} onClick={() => {
+                            if (pathname !== item.path) {
+                                if (item.path !== '/contact') {
+                                    router.push(item.path)
+                                } else {
+                                    const email = 'mailto:patwamihir2@gmail.com';
+                                    router.push(email);
+                                }
+                            }
+                        }
+                        }>
                             {item?.title}
                         </Button>
                     ))}

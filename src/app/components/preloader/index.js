@@ -11,7 +11,7 @@
  * @returns {React.Element} The PreLoader component.
  */
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { usePathname } from 'next/navigation';
 import { memo } from 'react';
 
@@ -22,7 +22,7 @@ import { memo } from 'react';
  * @returns {React.Element} The rendered PreLoader component.
  */
 
-const PreLoader = () => {
+const PreLoader = ({ children }) => {
     /**
  * The current pathname using the Next.js `usePathname` hook.
  *
@@ -31,28 +31,32 @@ const PreLoader = () => {
     const pathname = usePathname()
 
     return (
-        <>
-            {/* Left-to-right animation */}
+        <AnimatePresence mode="wait">
             <motion.div
-                initial={{ opacity: 1, x: window.innerWidth, background: '#c084fc', }}
-                animate={{ opacity: 1, x: [window.innerWidth, 0, -window.innerWidth], background: '#c084fc', }}
-                transition={{
-                    duration: 2, type: 'keyframes'
-                }}
                 key={pathname}
-                style={{ position: 'absolute', width: '100vw', height: '100vh', zIndex: 100 }}
-            />
-            {/* Right-to-left animation */}
-            <motion.div
-                initial={{ opacity: 1, x: -window.innerWidth, background: '#db2777', }}
-                animate={{ opacity: 1, x: [-window.innerWidth, 0, window.innerWidth], background: '#db2777', }}
+                initial='initialState'
+                animate='animateState'
+                exit='exitState'
                 transition={{
-                    duration: 2, type: 'keyframes',
+                    duration: 0.75
                 }}
-                key={pathname}
-                style={{ position: 'absolute', width: '100vw', height: '100vh', zIndex: 100 }}
-            />
-        </>
+                variants={{
+                    initialState: {
+                        opacity: 0,
+                        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+                    },
+                    animateState: {
+                        opacity: 1,
+                        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+                    },
+                    exitState: {
+                        clipPath: 'polygon(50% 0, 50% 0, 50% 100%, 50% 100%)',
+                    }
+                }}
+            >
+                {children}
+            </motion.div>
+        </AnimatePresence >
     )
 };
 
