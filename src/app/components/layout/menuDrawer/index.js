@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Drawer } from 'antd';
 import { Typography } from 'antd';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { UpSquareOutlined } from '@ant-design/icons';
 import dynamic from 'next/dynamic';
 
@@ -25,6 +25,7 @@ const MenuDrawerWrapper = dynamic(() => import('./menuWrappwe.style'), {
  */
 const MenuDrawer = ({ open, onClose, sections }) => {
     const router = useRouter();
+    const pathname = usePathname();
 
     return (
         <Drawer
