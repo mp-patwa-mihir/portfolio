@@ -36,11 +36,11 @@ const { Text } = Typography;
  */
 const Hero = () => {
     const router = useRouter()
-    const email = 'mailto:patwamihir2@gmail.com';
+    // const email = 'mailto:patwamihir2@gmail.com';
 
-    const hireClick = useCallback(() => {
-        router.push(email);
-    }, [router])
+    // const hireClick = useCallback(() => {
+    //     router.push(email);
+    // }, [router])
 
     /**
      * Render the Hero component.
@@ -71,7 +71,7 @@ const Hero = () => {
                         </Text>
                     </div>
                     <div className='btn_div'>
-                        <Button onClick={hireClick} className="glow-on-hover">Hire Me</Button>
+                        <Button onClick={() => { }} className="glow-on-hover">Hire Me</Button>
                         <Button className="glow-on-hover">Download CV</Button>
                     </div>
                 </Col>
